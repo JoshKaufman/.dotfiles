@@ -1,0 +1,23 @@
+
+[user]
+   name = AUTHORNAME
+   email = AUTHOREMAIL
+
+[credential]
+  helper = GIT_CREDENTIAL_HELPER
+
+[help]
+  autocorrect = 1
+
+[color]
+  ui = auto
+
+[core]
+  editor = vim
+  autocrlf = input
+  excludesfile = $HOME/.gitignore_global
+
+[alias]
+  lga = log --graph --oneline --all --decorate
+
+

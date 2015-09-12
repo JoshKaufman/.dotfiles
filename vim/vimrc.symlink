@@ -1,0 +1,170 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+
+" http://vimawesome.com/plugin/fugitive-vim
+Plugin 'tpope/vim-fugitive'
+
+" http://vimawesome.com/plugin/the-nerd-tree
+Plugin 'scrooloose/nerdtree'
+
+" http://vimawesome.com/plugin/syntastic
+Plugin 'scrooloose/syntastic'
+
+" http://vimawesome.com/plugin/vim-colorschemes-sweeter-than-fiction
+Plugin 'flazz/vim-colorschemes'
+
+" http://vimawesome.com/plugin/ctrlp-vim-state-of-grace
+Plugin 'kien/ctrlp.vim'
+
+" http://vimawesome.com/plugin/surround-vim
+Plugin 'tpope/vim-surround'
+
+" http://vimawesome.com/plugin/vim-airline-sad-beautiful-tragic
+Plugin 'bling/vim-airline'
+
+" http://vimawesome.com/plugin/vim-coffee-script
+Plugin 'kchmck/vim-coffee-script'
+
+" http://vimawesome.com/plugin/vim-tmux-navigator
+" Plugin 'christoomey/vim-tmux-navigator'
+
+" http://vimawesome.com/plugin/the-nerd-commenter
+Plugin 'scrooloose/nerdcommenter'
+
+" http://vimawesome.com/plugin/easymotion
+Plugin 'Lokaltog/vim-easymotion'
+
+" http://vimawesome.com/plugin/vim-gitgutter
+Plugin 'airblade/vim-gitgutter'
+
+" http://vimawesome.com/plugin/youcompleteme
+" " breaking vim
+" Plugin 'Valloric/YouCompleteMe'
+
+" http://vimawesome.com/plugin/indent-guides
+Plugin 'nathanaelkane/vim-indent-guides'
+
+" http://vimawesome.com/plugin/json-vim
+Plugin 'elzr/vim-json'
+
+" http://vimawesome.com/plugin/vim-cjsx
+Plugin 'mtscout6/vim-cjsx'
+
+" " Git plugin not hosted on GitHub
+" " git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" " The sparkup vim script is in a subdirectory of this repo called vim.
+" " Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" " Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+
+" http://vimawesome.com/plugin/supertab
+Plugin 'ervandew/supertab'
+
+" " EDITOR-CONFIG
+Plugin 'editorconfig/editorconfig-vim'
+
+" " http://vimawesome.com/plugin/ack-vim
+Plugin 'mileszs/ack.vim'
+
+" http://vimawesome.com/plugin/vim-less-safe-and-sound
+Plugin 'groenewege/vim-less'
+
+" http://vimawesome.com/plugin/vim-colors-solarized-sparks-fly
+Plugin 'altercation/vim-colors-solarized'
+
+" http://vimawesome.com/plugin/lucario
+Plugin 'raphamorim/lucario'
+
+" http://vimawesome.com/plugin/trailing-whitespace
+Plugin 'bronson/vim-trailing-whitespace'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+
+syntax enable
+set background=light
+let g:solarized_termcolors=256
+set number
+colorscheme solarized "lucario
+set showcmd
+let mapleader = ','
+set relativenumber
+set smartcase
+let g:ctrlp_show_hidden = 1
+
+" If a file is changed outside of vim, automatically reload it without asking
+set autoread
+
+" Always use vertical diffs
+set diffopt+=vertical
+
+set backspace=indent,eol,start
+" show trailing white space
+set list listchars=tab:»·,trail:·,nbsp:·
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+set undodir=~/.vim/tmp/undo/     " undo files
+set backupdir=~/.vim/tmp/backup/ " backups
+set directory=~/.vim/tmp/swap/   " swap files
+set tags=~/.vim/tmp/tags
+
+" " DO I REALLY WANT THIS?
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+nnoremap Q <nop>
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+
+" set paragraph folding for coffee-script
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+
+" fugitive config
+autocmd BufReadPost fugitive://* set bufhidden=delete
+set laststatus=2
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
+
