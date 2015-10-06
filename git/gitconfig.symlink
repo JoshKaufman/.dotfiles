@@ -1,7 +1,7 @@
 
 [user]
-   name = AUTHORNAME
-   email = AUTHOREMAIL
+   name = Josh Kaufman
+   email = me@awesomejosh.com
 
 
 [help]
@@ -29,4 +29,4 @@
   trustExitCode = true
 
 [credential]
-  helper = GIT_CREDENTIAL_HELPER
+  helper = osxkeychain

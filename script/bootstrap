@@ -123,7 +123,7 @@ link_file () {
   fi
 }
 
-install_dotfiles ()  {
+install_dotfiles () {
   info 'installing dotfiles'
 
   local overwrite_all=false backup_all=false skip_all=false
@@ -134,6 +134,7 @@ install_dotfiles ()  {
     link_file "$src" "$dst"
   done
 }
+
 setup_gitconfig
 install_dotfiles
 
