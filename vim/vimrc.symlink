@@ -94,6 +94,12 @@ Plugin 'raphamorim/lucario'
 " http://vimawesome.com/plugin/trailing-whitespace
 Plugin 'bronson/vim-trailing-whitespace'
 
+" http://vimawesome.com/plugin/md-vim
+Plugin 'hughbien/md-vim'
+
+" http://vimawesome.com/plugin/localvimrc
+Plugin 'embear/vim-localvimrc'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -133,16 +139,16 @@ set backspace=indent,eol,start
 set list listchars=tab:»·,trail:·,nbsp:·
 
 " Open new split panes to right and bottom, which feels more natural
-set splitbelow
 set splitright
+set splitbelow
 
 set undodir=~/.vim/tmp/undo/     " undo files
 set backupdir=~/.vim/tmp/backup/ " backups
 set directory=~/.vim/tmp/swap/   " swap files
 set tags=~/.vim/tmp/tags
 
-" " DO I REALLY WANT THIS?
 " Quicker window movement
+nnoremap <C-e> :NERDTree<cr>
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
@@ -154,17 +160,22 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-
 " set paragraph folding for coffee-script
 autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+
+" enable markdown plugin
+filetype plugin on  " if you don't already have it
+au BufNewFile,BufRead *.md set ft=md
+
 
 " fugitive config
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
+" load local vim configs
+let g:localvimrc_name=[ ".vimrc.local" ]
+" not as insecure since we renamed local file (default is .lvimrc hopefully no
+" wierd node_modules are trying all names :-O)
+let g:localvimrc_ask=0
 
