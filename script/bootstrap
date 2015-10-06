@@ -114,6 +114,7 @@ link_file () {
     then
       success "skipped $src"
     fi
+
   fi
 
   if [ "$skip" != "true" ]  # "false" or empty
@@ -135,8 +136,28 @@ install_dotfiles () {
   done
 }
 
+function setup_oh_my_custom () {
+
+  info 'installing oh-my-custom'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  for file in $(find -H "$DOTZ/zsh/oh-my-custom/scripts" -maxdepth 3 -name '*.zsh')
+  do
+    dst="$ZSH/custom/$basename"
+    link_file "$file" "$dst"
+  done
+
+  for file in $(find -H "$DOTZ/zsh/oh-my-custom/plugins" -maxdepth 3 -name '*.zsh')
+  do
+    dst="$ZSH/custom/plugins/$basename"
+    link_file "$file" "$dst"
+  done
+}
+
 setup_gitconfig
 install_dotfiles
+setup_oh_my_custom
 
 # If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]
