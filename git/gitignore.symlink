@@ -1,2 +1,7 @@
 *~
 .DS_Store
+
+
+# commonly used backup files while working on dirty projects
+*.old
+*.backup

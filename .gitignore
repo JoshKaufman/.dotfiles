@@ -1,0 +1,3 @@
+
+# don't commit gitconfig file. regenerate it when installing instead
+git/gitignore.symlink
