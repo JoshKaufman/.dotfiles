@@ -24,7 +24,7 @@ then
     source $file
   done
 else
-  echo 'no path files found \n something may have gone wrong'
+  #echo 'no path files found \n something may have gone wrong'
 fi
 
 # load everything that is set for global..
@@ -51,7 +51,7 @@ then
     source $file
   done
 else
-  echo 'No completion files found \n something may have gone wrong'
+  #echo 'No completion files found \n something may have gone wrong'
 fi
 
 
