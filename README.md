@@ -1,5 +1,5 @@
 # .dotfiles
-My dot-files mostly for mac. its a tmux/vim setup.. you may love it or hate it. 
+My dot-files mostly for mac. its a tmux/vim setup.. you may love it or hate it.
 
 
 Right now it expects to be installed in `$HOME/dotfiles` so `cd $HOME && git clone https://github.com/JoshKaufman/.dotfiles.git dotfiles`

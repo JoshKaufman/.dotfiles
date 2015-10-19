@@ -28,11 +28,9 @@ then
 fi
 
 ifneeded () {
-  if test ! $(which $1)
+  if ! type "$1" &> /dev/null
   then
     brew install $1
-  else
-   brew upgrade $1
   fi
 }
 
@@ -40,6 +38,7 @@ ifneeded "curl"
 ifneeded "Ack"
 ifneeded "vim"
 ifneeded "tmux"
+brew upgrade
 
 
 exit 0

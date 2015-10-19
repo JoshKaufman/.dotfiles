@@ -5,5 +5,5 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="/usr/local/percol/bin:$PATH"
 
 
-export MANPATH="/usr/local/man:$MANPATH"
+export MANPATH="/usr/share/man:/usr/local/man:/usr/local/share/man:$MANPATH"
 

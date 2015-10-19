@@ -5,7 +5,7 @@
 
 
 # check for vim 
-if test ! $(which vim)
+if ! type "vim" &> /dev/null;
 then
   echo " Installing Vim for you."
 

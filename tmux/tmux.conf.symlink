@@ -54,3 +54,7 @@ bind O pipe-pane -o "cat >>/tmp/#W.log" \; display "Toggled logging to /tmp/#W.l
 #percol integration
 bind b split-window "tmux ls | percol --initial-index $(tmux ls | awk \"/^$(tmux display-message -p '#{session_name}'):/ {print NR-1}\") | cut -d':' -f 1 | tr -d '\n' | xargs -0 tmux switch-client -t"
 
+
+
+# fixes subshells
+set-option -g default-command "reattach-to-user-namespace -l zsh"
