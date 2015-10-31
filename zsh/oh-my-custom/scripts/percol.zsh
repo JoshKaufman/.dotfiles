@@ -1,5 +1,4 @@
 # percol
-alias P='| percol'
 function percol-src() {
   local selected_dir=$(ghq list --full-path | percol --query "$lbuffer")
   if [ -n "$selected_dir" ]; then

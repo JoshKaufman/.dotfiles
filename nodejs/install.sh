@@ -4,7 +4,7 @@
 # This installs nodejs/npm/nvm and few global npm packages
 ifneeded () {
 
-  if test ! $(which "$1")
+  if ! type "$1" &> /dev/null;
   then
     npm install -g "$1"
   fi
@@ -25,13 +25,13 @@ installGlobals () {
   ifneeded "esdoc"
   ifneeded "eslint"
 
-  if ! $(which grunt)
+  if ! type "grunt" &> /dev/null;
   then
     npm install -g grunt-cli
   fi
 
 }
-if test ! $(which node)
+if ! type "node" &> /dev/null;
 then
   # we need a base version of npm so we can install nvm and latest node/iojs
   if ! [ -d $HOME/.nvm ]

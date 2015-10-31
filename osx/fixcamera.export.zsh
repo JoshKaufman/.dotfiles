@@ -1,0 +1,3 @@
+fixcamera () {
+    sudo killall VDCAssistant
+}

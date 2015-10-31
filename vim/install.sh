@@ -4,7 +4,7 @@
 # This installs vim and vim plugins (using vundle)
 
 
-# check for vim 
+# check for vim
 if ! type "vim" &> /dev/null;
 then
   echo " Installing Vim for you."

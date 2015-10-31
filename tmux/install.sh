@@ -13,12 +13,13 @@ fi
 
 if ! type "reattach-to-user-namespace" &> /dev/null;
 then
-  echo " Installing reattach-to-user-namespace"
+  echo " Installing reattach-to-user-namespace for you"
   brew install reattach-to-user-namespace
 fi
 
 if ! type "mux" &> /dev/null;
 then
+  echo " Installing tmuxinator for you"
   gem install tmuxinator
 fi
 
