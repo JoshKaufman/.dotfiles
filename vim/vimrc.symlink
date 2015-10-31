@@ -100,6 +100,12 @@ Plugin 'hughbien/md-vim'
 " http://vimawesome.com/plugin/localvimrc
 Plugin 'embear/vim-localvimrc'
 
+" http://vimawesome.com/plugin/ultisnips-forever-and-always
+Plugin 'SirVer/ultisnips'
+
+" http://vimawesome.com/plugin/vim-es6-sparks-fly
+Plugin 'isRuslan/vim-es6'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -118,7 +124,7 @@ filetype plugin indent on    " required
 "
 
 syntax enable
-set background=light
+set background=dark " light
 let g:solarized_termcolors=256
 set number
 colorscheme solarized "lucario
