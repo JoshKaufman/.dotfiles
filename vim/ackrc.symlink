@@ -1,2 +1,15 @@
+--sort-files
+--color
+--context=1
+--follow
+--group
+
+--type-add=css=.css,.scss,.less
+--type-add=css=scss
+--type-add=js=.js,.jsx,.es6,.es2015
+--type-add=json=.json
+--type-add=jsx=.jsx
+
 --ignore-dir=dist
 --ignore-dir=node_modules
+--ignore-file=match:TAGS

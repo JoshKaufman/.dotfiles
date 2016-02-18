@@ -106,6 +106,18 @@ Plugin 'SirVer/ultisnips'
 " http://vimawesome.com/plugin/vim-es6-sparks-fly
 Plugin 'isRuslan/vim-es6'
 
+" http://vimawesome.com/plugin/tagbar show tags outline
+Plugin 'majutsushi/tagbar'
+
+" http://vimawesome.com/plugin/vim-jsdoc
+Plugin 'heavenshell/vim-jsdoc'
+
+" http://vimawesome.com/plugin/vim-tmux-navigator
+Plugin 'christoomey/vim-tmux-navigator'
+
+" http://vimawesome.com/plugin/showmarks-you-belong-with-me
+" Plugin 'ShowMarks'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -142,7 +154,7 @@ set diffopt+=vertical
 
 set backspace=indent,eol,start
 " show trailing white space
-set list listchars=tab:»·,trail:·,nbsp:·
+set list listchars=tab:»·,trail:·,nbsp:«
 
 " Open new split panes to right and bottom, which feels more natural
 set splitright
@@ -170,9 +182,12 @@ noremap <Right> <NOP>
 " set paragraph folding for coffee-script
 autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
-" enable markdown plugin
-filetype plugin on  " if you don't already have it
-au BufNewFile,BufRead *.md set ft=md
+" quickfix for Ggrep and Glog
+autocmd QuickFixCmdPost *grep* cwindow
+autocmd QuickFixCmdPost *glog* cwindow
+
+" syntax highlighting for markdown files
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 
 " fugitive config
@@ -180,9 +195,18 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
+" look for tags file
+set tags=tags;/
+
 " load local vim configs
 let g:localvimrc_name=[ ".vimrc.local" ]
 " not as insecure since we renamed local file (default is .lvimrc hopefully no
 " wierd node_modules are trying all names :-O)
 let g:localvimrc_ask=0
 
+" Indent or outdent and maintain selection in visual mode
+vnoremap >> >gv
+vnoremap << <gv
+set scrolloff=3       " Always show at least three lines below cursor
+set mat=3             " Blink matching brackets for 3 tenths of a second
+set visualbell t_vb=  " No Noise or bell
