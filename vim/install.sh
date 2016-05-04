@@ -14,10 +14,9 @@ then
 
   # install vundle/vundlePlugins
   $DOTZ/vim/vundle-install.sh 2>&1
-
-  # create temp files used by vim
-  mkdir -p $HOME/.vim/tmp/{backup,swap,tags,undo}
-
 fi
+
+# create temp files used by vim
+mkdir -p $HOME/.vim/tmp/{backup,swap,tags,undo}
 
 exit 0
