@@ -13,9 +13,9 @@ then
 fi
 unset CHECK_ZSH_INSTALLED
 
-if [ ! -n "$ZSH" ];
+if [ -z "$ZSH" ];
 then
-  ZSH=$HOME/.oh-my-zsh
+  ZSH="$HOME/.oh-my-zsh"
 fi
 
 #if [ -d "$ZSH" ]; then
@@ -25,7 +25,7 @@ fi
 if [ ! -d "$ZSH" ];
 then
   echo "\033[0;34mcloning oh my zsh...\033[0m"
-  hash git >/dev/null 2>&1 && env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $zsh || {
+  hash git >/dev/null 2>&1 && env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH || {
     echo "git not installed"
     exit
   }
