@@ -210,3 +210,17 @@ vnoremap << <gv
 set scrolloff=3       " Always show at least three lines below cursor
 set mat=3             " Blink matching brackets for 3 tenths of a second
 set visualbell t_vb=  " No Noise or bell
+
+
+
+
+set suffixesadd+=.js
+set suffixesadd+=.jsx
+set suffixesadd+=.json
+set suffixesadd+=.es6
+set suffixesadd+=.es
+set suffixesadd+=.es2015
+set suffixesadd+=.h
+set suffixesadd+=.cpp
+set suffixesadd+=.css
+set suffixesadd+=.scss
