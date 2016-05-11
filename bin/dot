@@ -11,7 +11,7 @@ export DOTZ=$HOME/dotfiles
 $DOTZ/homebrew/install.sh 2>&1
 
 # Upgrade homebrew
-brew update
+brew update && brew upgrade && brew doctor; brew cleanup;
 
 
 # install vundle if needed
