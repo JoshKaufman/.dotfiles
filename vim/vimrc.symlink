@@ -115,6 +115,18 @@ Plugin 'heavenshell/vim-jsdoc'
 " http://vimawesome.com/plugin/vim-tmux-navigator
 Plugin 'christoomey/vim-tmux-navigator'
 
+" https://github.com/pangloss/vim-javascript
+Plugin 'pangloss/vim-javascript'
+
+" https://github.com/mxw/vim-jsx
+Plugin 'mxw/vim-jsx'
+
+" https://github.com/othree/yajs.vim
+Plugin 'othree/yajs.vim'
+
+" https://github.com/othree/es.next.syntax.vim
+Plugin 'othree/es.next.syntax.vim'
+
 " http://vimawesome.com/plugin/showmarks-you-belong-with-me
 " Plugin 'ShowMarks'
 
@@ -143,8 +155,13 @@ colorscheme solarized "lucario
 set showcmd
 let mapleader = ','
 set relativenumber
-set smartcase
 let g:ctrlp_show_hidden = 1
+
+
+" search
+set ignorecase
+set smartcase
+set incsearch
 
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
