@@ -19,3 +19,6 @@ $DOTZ/vim/vundle-install.sh 2>&1
 
 # update vundle plugins
 vim +PluinUpdate +qall
+
+
+npm cache clean && npmii npm@latest;
