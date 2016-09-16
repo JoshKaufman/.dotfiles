@@ -16,3 +16,4 @@ alias pgulp="./node_modules/gulp/bin/gulp.js"
 # # config
 
 
+alias irc="irssi"
