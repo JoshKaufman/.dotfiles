@@ -15,8 +15,10 @@ gupdate() {
             cd "$folder";
             if [ -d "./.git" ]; then
                 echo "checking for updates";
+                setopt verbose
                 git fetch --all;
-                git pull;
+                git pull --all;
+                unsetopt verbose
                 echo "pull was success leaving ${folder}";
                 cd ..;
             else
