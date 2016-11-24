@@ -1,20 +1,26 @@
-set -g default-terminal "screen-256color"
 
-# change default prefix key
-set -g prefix C-x
+# global config
+set -g prefix C-x # change prefix key
 unbind C-b
-
-# customize keybinding
-bind r source-file ~/.tmux.conf \; display "Reloaded!"
-
-# increase history
 set -g history-limit 10000
-
-# Make escape key instant
 set -sg escape-time 0
+setw -g mode-keys vi
+setw -g mouse on
+bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'"
+
+
+# Shortcuts
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+bind -t vi-copy 'v' begin-selection
+bind -t vi-copy 'y' copy-pipe "reattach-to-user-namespace pbcopy"
+unbind -t vi-copy Enter
+bind -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
+bind b split-window "tmux ls | percol --initial-index $(tmux ls | awk \"/^$(tmux display-message -p '#{session_name}'):/ {print NR-1}\") | cut -d':' -f 1 | tr -d '\n' | xargs -0 tmux switch-client -t"
 
 
 # THEME
+set -g default-terminal "screen-256color"
 set -g status-fg white
 set -g status-bg colour235
 setw -g window-status-fg cyan
@@ -27,8 +33,9 @@ set -g status-left-length 40
 set -g status-left "#[fg=green]Session: #S"
 # '#S' is session name, '#I' is window index, '#P' is pane index
 set -g status-right "#[fg=cyan] #H %d %b %R"
-set -g status-utf8 on
 
+# not working for some reason
+# set -g status-utf8 on
 
 # set color of active pane
 set -g pane-border-fg colour235
@@ -40,25 +47,9 @@ set -g pane-active-border-bg black
 setw -g monitor-activity on
 set -g visual-activity on
 
-# enable vi mode
-setw -g mode-keys vi
-setw -g mouse on # try this
-bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'"
-
-bind -t vi-copy 'v' begin-selection
-bind -t vi-copy 'y' copy-pipe "reattach-to-user-namespace pbcopy"
-unbind -t vi-copy Enter
-bind -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
-bind ] run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
-
 
 # output log
 bind O pipe-pane -o "cat >>/tmp/#W.log" \; display "Toggled logging to /tmp/#W.log"
-
-#percol integration
-bind b split-window "tmux ls | percol --initial-index $(tmux ls | awk \"/^$(tmux display-message -p '#{session_name}'):/ {print NR-1}\") | cut -d':' -f 1 | tr -d '\n' | xargs -0 tmux switch-client -t"
-
-
 
 # fixes subshells
 set-option -g default-command "reattach-to-user-namespace -l zsh"
@@ -82,4 +73,5 @@ bind -n C-j if-shell "$is_vim" "send-keys C-j" "select-pane -D"
 bind -n C-k if-shell "$is_vim" "send-keys C-k" "select-pane -U"
 bind -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R"
 bind -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
+bind C-l send-keys 'C-l'
 

@@ -1,9 +1,23 @@
 alias reload!='. ~/.zshrc'
 alias c='clear'
-
 alias locate="locate -i" # case insensitive
-function locate ()
-{
+
+function ls () {
+  command ls -F "$@"
+}
+
+alias lsc='ls -F '
+
+function vagrantssh() {
+  vagrant up && vagrant ssh -c "bash $* && bash"
+}
+
+alias d8="~/code/opensource/v8/out/x64.debug/d8"
+alias tick-processor="~/code/opensource/v8/tools/mac-tick-processor"
+
+# @TODO redo witi cross platform support (should work on linux & cygwin as well)
+#
+function locate () {
   local MAXAGE=$(( 24 * 60*60 )) # twenty-four hours, in seconds.
   local NOW="$(date +%s)"
   local DB="/var/db/locate.database"
@@ -28,3 +42,4 @@ function locate ()
 
   command locate "$@"
 }
+

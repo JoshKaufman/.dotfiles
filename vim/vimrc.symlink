@@ -1,6 +1,10 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+""""""""""""""""""""
+"""" setlocal foldmethod=marker
+"""""""""""""""""""
 
+" Vundle Plugins {{{
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,234 +14,250 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+"
 " plugin from http://vim-scripts.org/vim/scripts.html
+" want more plugins? find them at http://vimawesome.com
 Plugin 'L9'
-
-" http://vimawesome.com/plugin/fugitive-vim
-Plugin 'tpope/vim-fugitive'
-
-" http://vimawesome.com/plugin/the-nerd-tree
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'scrooloose/nerdtree'
-
-" http://vimawesome.com/plugin/syntastic
-Plugin 'scrooloose/syntastic'
-
-" http://vimawesome.com/plugin/vim-colorschemes-sweeter-than-fiction
-Plugin 'flazz/vim-colorschemes'
-
-" http://vimawesome.com/plugin/ctrlp-vim-state-of-grace
-Plugin 'kien/ctrlp.vim'
-
-" http://vimawesome.com/plugin/surround-vim
-Plugin 'tpope/vim-surround'
-
-" http://vimawesome.com/plugin/vim-airline-sad-beautiful-tragic
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
-
-" http://vimawesome.com/plugin/vim-coffee-script
-Plugin 'kchmck/vim-coffee-script'
-
-" http://vimawesome.com/plugin/vim-tmux-navigator
-" Plugin 'christoomey/vim-tmux-navigator'
-
-" http://vimawesome.com/plugin/the-nerd-commenter
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'elzr/vim-json'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim' " trying it out as a replacement for Ack
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'embear/vim-localvimrc'
+Plugin 'majutsushi/tagbar' " show ctags outline
+Plugin 'taglist.vim' " source code browser for c++ python etc.
 
 " http://vimawesome.com/plugin/easymotion
-Plugin 'Lokaltog/vim-easymotion'
-
-" http://vimawesome.com/plugin/vim-gitgutter
-Plugin 'airblade/vim-gitgutter'
-
-" http://vimawesome.com/plugin/youcompleteme
-" " breaking vim
-" Plugin 'Valloric/YouCompleteMe'
-
-" http://vimawesome.com/plugin/indent-guides
-Plugin 'nathanaelkane/vim-indent-guides'
-
-" http://vimawesome.com/plugin/json-vim
-Plugin 'elzr/vim-json'
-
-" http://vimawesome.com/plugin/vim-cjsx
-Plugin 'mtscout6/vim-cjsx'
-
-" " Git plugin not hosted on GitHub
-" " git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" " The sparkup vim script is in a subdirectory of this repo called vim.
-" " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" " Avoid a name conflict with L9
-" Plugin 'user/L9', {'name': 'newL9'}
-
-" http://vimawesome.com/plugin/supertab
-Plugin 'ervandew/supertab'
-
-" " EDITOR-CONFIG
-Plugin 'editorconfig/editorconfig-vim'
-
-" " http://vimawesome.com/plugin/ack-vim
-Plugin 'mileszs/ack.vim'
-
-" http://vimawesome.com/plugin/vim-less-safe-and-sound
-Plugin 'groenewege/vim-less'
-
-" http://vimawesome.com/plugin/vim-colors-solarized-sparks-fly
-Plugin 'altercation/vim-colors-solarized'
-
-" http://vimawesome.com/plugin/lucario
-Plugin 'raphamorim/lucario'
-
-" http://vimawesome.com/plugin/trailing-whitespace
-Plugin 'bronson/vim-trailing-whitespace'
-
-" http://vimawesome.com/plugin/md-vim
-Plugin 'hughbien/md-vim'
-
-" http://vimawesome.com/plugin/localvimrc
-Plugin 'embear/vim-localvimrc'
-
 " http://vimawesome.com/plugin/ultisnips-forever-and-always
+Plugin 'easymotion/vim-easymotion'
+Plugin 'groenewege/vim-less'
 Plugin 'SirVer/ultisnips'
+" http://vimawesome.com/plugin/gundo
+Plugin 'sjl/gundo.vim'
 
-" http://vimawesome.com/plugin/vim-es6-sparks-fly
-Plugin 'isRuslan/vim-es6'
+" http://vimawesome.com/plugin/surround-vim
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-surround'
 
-" http://vimawesome.com/plugin/tagbar show tags outline
-Plugin 'majutsushi/tagbar'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
-" http://vimawesome.com/plugin/vim-jsdoc
-Plugin 'heavenshell/vim-jsdoc'
-
-" http://vimawesome.com/plugin/vim-tmux-navigator
-Plugin 'christoomey/vim-tmux-navigator'
-
-" https://github.com/pangloss/vim-javascript
-Plugin 'pangloss/vim-javascript'
-
-" https://github.com/mxw/vim-jsx
-Plugin 'mxw/vim-jsx'
-
-" https://github.com/othree/yajs.vim
-Plugin 'othree/yajs.vim'
-
-" https://github.com/othree/es.next.syntax.vim
-Plugin 'othree/es.next.syntax.vim'
+" block comment shortcuts
+ Plugin 'scrooloose/nerdcommenter'
 
 " http://vimawesome.com/plugin/showmarks-you-belong-with-me
 " Plugin 'ShowMarks'
+
+Plugin 'othree/yajs.vim'
+Plugin 'othree/es.next.syntax.vim'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'isRuslan/vim-es6' " def adds some color but we can probably find better
+
+" disabled because I don't need them at the moment..
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'mxw/vim-jsx'
+" Plugin 'mtscout6/vim-cjsx'
+
+
+" dash api https://github.com/rizzatti/dash.vim#readme
+Plugin 'rizzatti/dash.vim'
+Plugin 'derekwyatt/vim-scala'
+
+
+Plugin 'marijnh/tern_for_vim'
+
+Plugin 'jnurmine/zenburn'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
+" }}}
+
+" Color and Schema {{{
 
 syntax enable
 set background=dark " light
 let g:solarized_termcolors=256
-set number
-colorscheme solarized "lucario
+" colorscheme solarized " lucario
+colorscheme zenburn
+
+" }}}
+
+" Spaces, Tabs and Syntax {{{
+
+set backspace=indent,eol,start
+set list listchars=tab:»·,trail:·,eol:¬,nbsp:« " show trailing white space
+
+" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown " syntax highlighting for markdown files
+autocmd BufNewFile,BufFilePre,BufRead *.cql set filetype=sql " syntax highlighting for cassandra CQL
+
+" }}}
+
+" UI and Config {{{
+
 set showcmd
+set relativenumber " set number
+set wildmenu
+set lazyredraw
+set scrolloff=3       " Always show at least three lines below cursor
+set cursorline
+set mat=3             " Blink matching brackets for 3 tenths of a second
+
 let mapleader = ','
-set relativenumber
-let g:ctrlp_show_hidden = 1
+set autoread " If a file is changed outside of vim, automatically reload it without asking
+
+" status line
+set laststatus=2
+set visualbell t_vb=  " No Noise or bell
+
+" not sure if this is doing anything. probably airplane is overriding it
+" anyway.
+" -----------------------------------
+" set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" -------------------------------------
 
 
-" search
+" }}}
+
+" Search and Navigation {{{
+
 set ignorecase
 set smartcase
 set incsearch
 
-" If a file is changed outside of vim, automatically reload it without asking
-set autoread
-
-" Always use vertical diffs
-set diffopt+=vertical
-
-set backspace=indent,eol,start
-" show trailing white space
-set list listchars=tab:»·,trail:·,nbsp:«
-
-" Open new split panes to right and bottom, which feels more natural
-set splitright
-set splitbelow
-
-set undodir=~/.vim/tmp/undo/     " undo files
-set backupdir=~/.vim/tmp/backup/ " backups
-set directory=~/.vim/tmp/swap/   " swap files
-set tags=~/.vim/tmp/tags
-
-" Quicker window movement
 nnoremap <C-e> :NERDTreeToggle<cr>
 nnoremap <C-f> :NERDTreeFind<cr>
+nnoremap <silent> <F9> :TagbarToggle<CR>
+
+" quick sed;
+noremap ;' :%s:::g<Left><Left><Left>
+noremap ;; :%s:::cg<Left><Left><Left><Left>
+
+" }}}
+
+" Folding {{{
+
+set nofoldenable " don't collapse by default
+set foldmethod=syntax
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" }}}
+
+" Movement and Shortucts {{{
+
+nnoremap gV `[v`] " select las insert content
+set suffixesadd+=.js,.jsx,.json,.es6,.es,.es2015,.css,.scss,.h,.c,.cpp,.hpp
+
+inoremap kj <esc>
+inoremap jk <esc>
+inoremap jj <esc>
+inoremap kk <esc>
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-
 nnoremap Q <nop>
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
 
+" Indent or outdent and maintain selection in visual mode
+vnoremap >> >gv
+vnoremap << <gv
+
+" not needed at the moment
+" noremap <Up> <NOP>
+" noremap <Down> <NOP>
+" noremap <Left> <NOP>
+" noremap <Right> <NOP>
 " set paragraph folding for coffee-script
-autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+" autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+
+
+" }}}
+
+" Git and Misc Plugins {{{
+nnoremap <F5> :GundoToggle<CR>
+
+set diffopt+=vertical " Always use vertical diffs
+set splitright
+set splitbelow
 
 " quickfix for Ggrep and Glog
 autocmd QuickFixCmdPost *grep* cwindow
 autocmd QuickFixCmdPost *glog* cwindow
 
-" syntax highlighting for markdown files
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-
-
 " fugitive config
 autocmd BufReadPost fugitive://* set bufhidden=delete
-set laststatus=2
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
-" look for tags file
-set tags=tags;/
+" Quicker window movement
+let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-" load local vim configs
-let g:localvimrc_name=[ ".vimrc.local" ]
-" not as insecure since we renamed local file (default is .lvimrc hopefully no
-" wierd node_modules are trying all names :-O)
+
+" trying a better EasyMotion setup.
+" --------------------------------------
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key
+" binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+" nmap s <Plug>(easymotion-overwin-f2)
+"
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+"
+" JK motions: Line motions
+map ssj <Plug>(easymotion-j)
+map ssk <Plug>(easymotion-k)
+" ------------------------------------------------
+
+let g:localvimrc_name=[ ".vimrc.local" ] " load local vim configs (default is .lvimrc)
 let g:localvimrc_ask=0
 
-" Indent or outdent and maintain selection in visual mode
-vnoremap >> >gv
-vnoremap << <gv
-set scrolloff=3       " Always show at least three lines below cursor
-set mat=3             " Blink matching brackets for 3 tenths of a second
-set visualbell t_vb=  " No Noise or bell
+" Plugin Config
+let g:ctrlp_show_hidden = 1
+let g:syntastic_javascript_checkers = ['eslint']
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
+" }}}
 
-set suffixesadd+=.js
-set suffixesadd+=.jsx
-set suffixesadd+=.json
-set suffixesadd+=.es6
-set suffixesadd+=.es
-set suffixesadd+=.es2015
-set suffixesadd+=.h
-set suffixesadd+=.cpp
-set suffixesadd+=.css
-set suffixesadd+=.scss
+" Backups {{{
+
+set undodir=~/.vim/tmp/undo/     " undo files
+set backupdir=~/.vim/tmp/backup/ " backups
+set directory=~/.vim/tmp/swap/   " swap files
+set tags=~/.vim/tmp/tags
+set tags=tags;/ " look for tags file
+
+" }}}
+
+" vimrc specific display config.
+" vim:foldmethod=marker:foldlevel=0
+
